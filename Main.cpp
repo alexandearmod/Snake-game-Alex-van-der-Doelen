@@ -1,36 +1,45 @@
 #include <SFML/Graphics.hpp>
-
-int main() 
-{
+#include "Board.h"
+#include "Location.h"
+#include "Main.h"
     sf::Font font;
-    if (font.openFromFile("Midnight angel.ttf"));
-    
-    sf::Text text(font);
-    text.setString("Hello world");
-    text.setCharacterSize(30);
-    text.setFillColor(sf::Color::Red);
-    text.setStyle(sf::Text::Bold);
+    sf::Text text1(font);
 
-    //pre-made window function made by sfml. https://www.sfml-dev.org/tutorials/2.5/graphics-draw.php
-    sf::RenderWindow window(sf::VideoMode({ 800, 600 }), "Snake Game");
-
-    while (window.isOpen())
+   
+ 
+    int main()
     {
-        while (const std::optional event = window.pollEvent())
+        if (!font.openFromFile("Midnight angel.ttf")) {
+            return -1;
+        }
+        
+
+        Board board;
+        Location loc;
+        loc.x = 100;
+        loc.y = 100;
+
+        sf::RenderWindow window(sf::VideoMode({ 800, 600 }), "Snake Game");
+
+        while (window.isOpen())
         {
-            if (event->is<sf::Event::Closed>())
-                window.close();
+            while (const std::optional event = window.pollEvent())
+            {
+                if (event->is<sf::Event::Closed>())
+                    window.close();
+            }
+
+            window.clear(sf::Color::Black);
+            /* Draw stuff between window.clear and window.display */
+            
+            
+            
+            board.DrawCell(window, loc, sf::Color::Blue);
+           
+            /* --------------------------------------------------*/
+            window.display();
         }
 
-        window.clear(sf::Color::Black); 
-        /* Draw stuff between window.clear and window.display */
-
-
-        window.draw(text);
-
-        /* --------------------------------------------------*/
-        window.display();
+        return 0;
     }
 
-    return 0;
-}

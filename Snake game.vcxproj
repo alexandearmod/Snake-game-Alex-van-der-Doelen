@@ -138,12 +138,14 @@
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Location.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Snake game.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Board.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
