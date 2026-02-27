@@ -142,13 +142,14 @@
     <ClInclude Include="Location.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="Snake game.h" />
+    <ClInclude Include="Snake.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Snake.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Snake game.rc" />
