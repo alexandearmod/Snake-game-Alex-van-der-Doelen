@@ -1,9 +1,41 @@
 #include "Snake.h"
+#include "Location.h"
 
 Snake::Snake(const Location& loc)
 {
 	size[0].LocationHead(loc);
+	currentSize = 1;
 }
+//transform
+void Snake::Transform::LocationHead(const Location& find_loc)
+{
+	loc = find_loc;
+	color = Snake::headcolor; //set the color of the head, color is set in snake.h
+}
+
+void Snake::Transform::Move(const Location& delta_loc)
+{
+	loc.increase(delta_loc); //move by square (delta)
+}
+
+void Snake::Transform::Body()
+{
+	color = Snake::bodycolor; //set body color of the snake.
+}
+
+void Snake::Transform::Follow(const Transform& follow)
+{
+	loc = follow.loc; //the last segment will follow the next
+}
+
+
+void Snake::Transform::Draw(sf::RenderWindow& window)
+{
+	board.DrawCell(window, loc, color);
+}
+
+////
+
 
 void Snake::Move(const Location& delta_loc)
 {
@@ -26,10 +58,12 @@ void Snake::Grow()
 	}
 }
 
-void Snake::Draw(sf::RenderWindow& window, Location loc, sf::Color color) //draw the snake, and the segments one by one once they're collected and added
+
+
+void Snake::Draw(sf::RenderWindow& window, Board& board)//draw the snake, and the segments one by one once they're collected and added
 {
 	for (int i = 0; i < currentSize; ++i)
 	{
-		size[i].Draw(window, loc, color);
+		board.DrawCell(window, size[i].loc, size[i].color);
 	}
 }
