@@ -12,12 +12,10 @@ Game::Game(sf::RenderWindow& window)
 
 void Game::Go()
 {
-	
-
 	if (moveClock.getElapsedTime() >= moveDelay)
 	{
 		Movement();
-		moveClock.restart();
+		moveClock.restart(); //a timer to prevent the snake from moving at incredible speeds, instead it can only move by a few frames(as set in game.h, 0,2 for each move = 5 moves/sec
 	}
 	Draw();
 }
@@ -43,6 +41,10 @@ void Game::Movement()
 
 	snake.Move(delta_loc);
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LControl))
+	{
+		snake.Grow();
+	}
 }
 
 void Game::Draw()
