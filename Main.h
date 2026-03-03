@@ -11,6 +11,6 @@ public:
 	Location loc;
 	std::mt19937 rng;
 	sf::Color color = sf::Color::Transparent;
-	Snake snake;
+	
 };
 

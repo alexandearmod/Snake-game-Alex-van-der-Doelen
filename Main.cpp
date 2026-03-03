@@ -12,10 +12,10 @@
     {
        
         sf::RenderWindow window(sf::VideoMode({ 800, 600 }), "Snake Game");
-        Board board;
-        Game game(window);
        
-
+        Game game(window);
+        
+        
 
 
         while (window.isOpen())
@@ -32,6 +32,7 @@
             /* Draw stuff between window.clear and window.display */
             game.Go();
            
+
             
             /* --------------------------------------------------*/
             window.display();

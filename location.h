@@ -3,10 +3,10 @@
 class Location
 {
 public:
-	float x;
-	float y;
+	int x;
+	int y;
 
-	void increase(const Location& inc) //used for delta location, to increase it by delta.
+	void increase(const Location& inc) //used for delta location.
 	{
 		x += inc.x;
 		y += inc.y;

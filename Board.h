@@ -8,10 +8,11 @@ public:
 
 	void DrawCell(sf::RenderWindow& window, Location& loc, sf::Color color);
 
-	float dimension = 20; //boxes of grid will be 20x20
-	
-	int width = 30;;
-	int height = 30;
+	int dimension = 20; //boxes of grid will be 20x20
+	bool IsInside(const Location& loc);
+
+	int width = 800 / dimension;
+	int height = 600 / dimension;
 	sf::Color color = sf::Color::White;
 	
 	

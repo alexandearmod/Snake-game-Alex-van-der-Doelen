@@ -11,6 +11,7 @@ void Snake::Transform::LocationHead(const Location& find_loc)
 {
 	loc = find_loc;
 	color = Snake::headcolor; //set the color of the head, color is set in snake.h
+
 }
 
 void Snake::Transform::Move(const Location& delta_loc)
@@ -28,13 +29,23 @@ void Snake::Transform::Follow(const Transform& follow)
 	loc = follow.loc; //the last segment will follow the next
 }
 
-
-void Snake::Transform::Draw(sf::RenderWindow& window)
+Location Snake::Transform::GetLoc() const
 {
-	board.DrawCell(window, loc, color);
+	return loc; //return the location to be used to calculate the next head location for the borders and snake body collision.
 }
 
-////
+Location Snake::NextHeadLocation(const Location& delta_loc) const
+{
+	Location l(size[0].GetLoc()); //find location of the head
+	l.increase(delta_loc); //add the next value to it (where the head will be next frame)
+	return l; //return that value
+}
+
+
+
+
+
+////snek
 
 
 void Snake::Move(const Location& delta_loc)
@@ -45,6 +56,7 @@ void Snake::Move(const Location& delta_loc)
 	}
 	size[0].Move(delta_loc); //move the head of the snake (which the player controls) by delta loc.
 	//I use delta location because it moves the snake by frame, not by player input. This will keep the snake constantly moving.
+	//https://www.youtube.com/watch?v=vsPhxaoRG08
 }
 
 
@@ -54,7 +66,10 @@ void Snake::Grow()
 {
 	if (currentSize < maxCurrentSize) //if the current size is smaller than the maximum size
 	{
+
+		size[currentSize].Body(); //set max size to 100 with array
 		++currentSize; //increase the size (when you collect)
+		
 	}
 }
 
@@ -67,3 +82,5 @@ void Snake::Draw(sf::RenderWindow& window, Board& board)//draw the snake, and th
 		board.DrawCell(window, size[i].loc, size[i].color);
 	}
 }
+
+
