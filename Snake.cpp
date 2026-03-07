@@ -66,10 +66,7 @@ void Snake::Grow()
 {
 	if (currentSize < maxCurrentSize) //if the current size is smaller than the maximum size
 	{
-
-		size[currentSize].Body(); //set max size to 100 with array
 		++currentSize; //increase the size (when you collect)
-		
 	}
 }
 

@@ -16,9 +16,8 @@ public:
 		void Move(const Location& delta_loc);
 		//make the tail follow the head of the snake
 		void Follow(const Transform& follow);
-		Location GetLoc() const;
-		//void Draw(sf::RenderWindow& window); //draw the body parts
-		
+		void Draw(sf::RenderWindow& window);
+
 		Location loc; //reference location and color to be able to use it
 		sf::Color color;
 		Board board;
@@ -28,10 +27,9 @@ public:
 	
 	Snake(const Location& loc);
 	void Move(const Location& delta_loc);
-	void Grow(); //grow the snake, which then uses follow to have the body part follow the next
-	void Draw(sf::RenderWindow& window, Board& board); //draw the snake
-	Location NextHeadLocation(const Location& delta_loc) const;
-
+	void Grow();
+	void Draw(sf::RenderWindow& window, Board& board);
+	
 	static constexpr sf::Color headcolor = sf::Color::Green;
 	static constexpr sf::Color bodycolor = sf::Color::Blue;
 	static constexpr int maxCurrentSize = 99; //maximum size of snake

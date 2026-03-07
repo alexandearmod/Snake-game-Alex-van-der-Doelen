@@ -19,25 +19,14 @@ Game::Game(sf::RenderWindow& window) //constructer
 	
 {
 
-	std::uniform_int_distribution<int> xDist(0, board.width - 1);//the food can not spawn outside of the border
-	std::uniform_int_distribution<int> yDist(0, board.height - 1); // - 1 so that it can not spawn on the border
-	//https://stackoverflow.com/questions/21237905/how-do-i-generate-thread-safe-uniform-random-numbers
-	if (font.openFromFile("fonts/EndFont.ttf"))
-	{
-
-	}
-
-	food.loc.x = xDist(rng);
-	food.loc.y = yDist(rng); //draw the food with location, at random coordinates
-	food.color = sf::Color::Red;
-}
-
 void Game::Go()
 {
+	if (moveClock.getElapsedTime() >= moveDelay)
+	{
+		Movement();
+		moveClock.restart(); //a timer to prevent the snake from moving at incredible speeds, instead it can only move by a few frames(as set in game.h, 0,2 for each move = 5 moves/sec
+	}
 	Draw();
-	Movement();
-	TestCollision();
-
 }
 
 	void Game::Movement()
@@ -80,7 +69,7 @@ void Game::Go()
 
 
 
-	}
+}
 
 void Game::Draw()
 {
