@@ -8,16 +8,13 @@
     
   
  
-    int main()
+    int main() //basic sfml window https://dev.to/dwarft/creating-a-window-in-sfml-gnh
     {
        
         sf::RenderWindow window(sf::VideoMode({ 800, 600 }), "Snake Game");
        
         Game game(window);
         
-        
-
-
         while (window.isOpen())
         {
             while (const std::optional event = window.pollEvent())
@@ -26,14 +23,12 @@
                     window.close();
             }
            
-
-
             window.clear(sf::Color::Black);
+
             /* Draw stuff between window.clear and window.display */
+
             game.Go();
            
-
-            
             /* --------------------------------------------------*/
             window.display();
         }
